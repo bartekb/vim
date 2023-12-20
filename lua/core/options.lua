@@ -37,7 +37,6 @@ opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start"
 
 -- Clipboard
-opt.clipboard:append("unnamed")
 opt.clipboard:append("unnamedplus")
 
 -- Split Windows

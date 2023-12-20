@@ -10,6 +10,33 @@ keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "save and quit" })
 keymap.set("n", "<leader>qq", ":q!<CR>", { desc = "quit without saving" })
 keymap.set("n", "<leader>ww", ":w<CR>", { desc = "save" })
 
+-- Paste in visual-mode without pushing to register
+keymap.set("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { silent = true, desc = "Paste" })
+keymap.set("x", "P", 'P:let @+=@0<CR>:let @"=@0<CR>', { silent = true, desc = "Paste In-place" })
+
+-- Remap for dealing with word wrap
+keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- greatest remap ever
+-- keymap.set("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+-- keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+-- keymap.set("n", "<leader>Y", [["+Y]])
+
+keymap.set({ "n", "v" }, "d", [["_d]])
+keymap.set({ "n", "v" }, "dd", [["_dd]])
+keymap.set({ "n", "v" }, "D", [["_D]])
+keymap.set("n", "ciw", [["_ciw]])
+-- greatest remap ever
+-- keymap.set("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+-- keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+-- keymap.set("n", "<leader>Y", [["+Y]])
+
+-- keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "split window horizontally" })
@@ -46,8 +73,9 @@ keymap.set("n", "<leader>er", ":NvimTreeFocus<CR>", { desc = "toggle focus to fi
 keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>", { desc = "find file in file explorer" })
 
 -- Telescope
-keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_files({ hidden = true }) end,
-	{ desc = "find files" })
+keymap.set("n", "<leader>ff", function()
+	require("telescope.builtin").find_files({ hidden = true })
+end, { desc = "find files" })
 keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "live grep" })
 keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "buffers" })
 keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "help tags" })
@@ -117,5 +145,5 @@ keymap.set("n", "<leader>tr", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", { de
 keymap.set("i", "<C-Space>", "<cmd>lua vim.lsp.buf.completion()<CR>", { desc = "show completion" })
 
 -- Fucking macro off
-keymap.set('n', 'Q', 'q', { desc = "record a macro" })
-keymap.set('n', 'q', '<Nop>', {})
+keymap.set("n", "Q", "q", { desc = "record a macro" })
+keymap.set("n", "q", "<Nop>", {})
