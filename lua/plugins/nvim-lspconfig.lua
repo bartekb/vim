@@ -35,6 +35,7 @@ return {
 				-- "jsonls", # requires npm to be installed
 				"lemminx",
 				"marksman",
+				-- "ruby_ls",
 				"quick_lint_js",
 				"tsserver", -- requires npm to be installed
 				"yamlls", -- requires npm to be installed
@@ -68,5 +69,7 @@ return {
 				},
 			},
 		})
+
+		lspconfig.ruby_ls.setup({})
 	end,
 }
